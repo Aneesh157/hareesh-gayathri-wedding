@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Hareesh &amp; Gayathri — Wedding Invitation</title>
+  
+  <!-- SEO & Social Preview Tags -->
+  <meta name="description" content="You're warmly invited to celebrate the wedding of Hareesh &amp; Gayathri on 24 October 2026 at Sumangali Auditorium, Thirunarayanapuram." />
+  <meta name="theme-color" content="#3D0F19" />
+  
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hareesh &amp; Gayathri — Wedding Invitation" />
+  <meta property="og:description" content="Two hearts, two souls, and one beautiful journey. Join us as we celebrate our wedding on 24 October 2026." />
+  <meta property="og:image" content="assets/couple.jpg" />
+  <meta property="og:image:width" content="1170" />
+  <meta property="og:image:height" content="1532" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hareesh &amp; Gayathri — Wedding Invitation" />
+  <meta name="twitter:description" content="Join us as we celebrate our wedding on 24 October 2026 at Sumangali Auditorium, Thirunarayanapuram." />
+  <meta name="twitter:image" content="assets/couple.jpg" />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Background Petals and Celebration Canvases -->
+  <canvas id="background-canvas" aria-hidden="true"></canvas>
+  <canvas id="celebration-canvas" aria-hidden="true"></canvas>
+
+  <!-- Audio Element for Wedding Soundtrack -->
+  <audio id="wedding-audio" src="assets/wedding-music.mp3" loop preload="auto" playsinline></audio>
+
+  <!-- ======================================================================
+       1. OPENING COVER EXPERIENCE (Envelope / Curtain Transition)
+       ====================================================================== -->
+  <div id="opening-cover" class="opening-cover" role="dialog" aria-modal="true" aria-label="Wedding Invitation Envelope">
+    <div class="opening-backdrop"></div>
+    <div class="opening-curtain curtain-left"></div>
+    <div class="opening-curtain curtain-right"></div>
+
+    <div class="opening-card">
+      <div class="ornament-corner top-left"></div>
+      <div class="ornament-corner top-right"></div>
+      <div class="ornament-corner bottom-left"></div>
+      <div class="ornament-corner bottom-right"></div>
+
+      <div class="opening-blessing">വിവാഹക്ഷണപത്രിക &bull; With Family Blessings</div>
+
+      <div class="opening-portrait-wrap">
+        <img src="assets/couple.jpg" alt="Hareesh and Gayathri" loading="eager" />
+      </div>
+
+      <h1 class="opening-names">
+        Hareesh
+        <span class="ampersand">&amp;</span>
+        Gayathri
+      </h1>
+
+      <p class="opening-subtext">24 October 2026 &bull; 1202 തുലാം 7</p>
+
+      <button id="tap-to-open-btn" class="tap-to-open-btn" aria-label="Tap to open the invitation">
+        <span>Tap to Open</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </button>
+
+      <div class="tap-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>Music starts upon opening</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       FLOATING ACTIONS & BOTTOM NAVIGATION
+       ====================================================================== -->
+  <header class="floating-action-bar" aria-label="Quick Actions">
+    <button id="music-toggle-btn" class="floating-circle-btn" aria-label="Toggle Wedding Music" title="Wedding Music">
+      <div class="music-equalizer" aria-hidden="true">
+        <span class="equalizer-bar"></span>
+        <span class="equalizer-bar"></span>
+        <span class="equalizer-bar"></span>
+        <span class="equalizer-bar"></span>
+      </div>
+    </button>
+    <button id="floating-share-btn" class="floating-circle-btn" aria-label="Share Wedding Invitation" title="Share Invitation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+    </button>
+    <!-- <button id="floating-rsvp-btn" class="floating-circle-btn" aria-label="Send Wedding RSVP" title="RSVP">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+    </button> -->
+  </header>
+
+  <nav class="site-nav-pill" aria-label="Section Navigation">
+    <a href="#hero" class="nav-link">Home</a>
+    <a href="#story" class="nav-link">Our Story</a>
+    <a href="#date-section" class="nav-link">Date</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#venue" class="nav-link">Venue</a>
+  </nav>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main id="main-content">
+
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="hero-section" aria-label="Wedding Announcement">
+      <div class="hero-monogram" aria-hidden="true">H &bull; G</div>
+      <p class="hero-pretitle">A beautiful beginning to a lifetime together</p>
+      
+      <h2 class="hero-names golden-shine">
+        Hareesh <span class="hero-amp">&amp;</span> Gayathri
+      </h2>
+      <div style="font-family: var(--font-serif-display); font-size: 16px; color: var(--wine-700); margin-top: -14px; margin-bottom: 20px; letter-spacing: 0.15em;">
+        ഹരീഷ് &amp; ഗായത്രി
+      </div>
+
+      <!-- Arch framed couple image -->
+      <div class="hero-portrait-card">
+        <div class="hero-portrait-inner">
+          <img src="assets/couple.jpg" alt="Hareesh and Gayathri couple portrait" class="hero-portrait-img" loading="eager" />
+          <div class="hero-portrait-overlay"></div>
+          <div class="hero-date-badge">24 October 2026 &bull; 1202 തുലാം 7</div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>SCROLL</span>
+        <span class="scroll-arrow">&darr;</span>
+      </div>
+    </section>
+
+    <!-- 3. EMOTIONAL INVITATION MESSAGE -->
+    <section id="invitation" class="invitation-section reveal-on-scroll" aria-label="Invitation Message">
+      <div class="invitation-card-border"></div>
+      <div class="section-badge">വിവാഹക്ഷണപത്രിക &bull; Warmly Invited</div>
+      
+      <!-- Auspicious Ganesha Emblem -->
+      <div style="margin: 10px auto 16px; color: var(--gold-600); font-size: 32px;" aria-hidden="true">
+        卐
+      </div>
+
+      <h3 style="font-family: var(--font-serif-display); font-size: 24px; color: var(--wine-900); margin-bottom: 14px; letter-spacing: 0.05em;">
+        വിവാഹക്ഷണപത്രിക
+      </h3>
+
+      <div style="font-family: var(--font-serif-body); font-size: 19px; line-height: 1.8; color: var(--wine-900); max-width: 680px; margin: 0 auto 20px;">
+        <p style="margin-bottom: 12px; font-weight: 600;">
+          ഞങ്ങളുടെ മകൻ <span style="color: var(--wine-700); font-size: 1.15em;">ഹരീഷ്</span> വിവാഹിതനാവുകയാണ്.<br />
+          വധു : <span style="color: var(--wine-700); font-size: 1.15em;">ഗായത്രി</span>
+        </p>
+        <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 18px;">
+          (D/o ശ്രീ. ബാലകൃഷ്ണൻ &amp; ശ്രീമതി. കൃഷ്ണവേണി, മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം)
+        </p>
+        <p style="margin-bottom: 16px; font-style: italic;">
+          Two hearts, two souls, and one beautiful journey. With the love and blessings of our families, we invite you to be a part of our special day as we begin this beautiful chapter of our lives together.
+        </p>
+        <p style="background: rgba(212, 175, 55, 0.12); padding: 16px 20px; border-radius: 14px; border: 1px solid rgba(212, 175, 55, 0.3); font-size: 16px; font-weight: 500; line-height: 1.7; color: var(--wine-900);">
+          വിവാഹത്തോടനുബന്ധിച്ച് വൈകുന്നേരം 5 മണി മുതൽ 8 മണിവരെ സുമംഗലി കല്യാണമണ്ഡപത്തിൽ വെച്ച് നടത്തുന്ന സ്നേഹ വിരുന്നിൽ പങ്കുകൊണ്ട് വധൂവരന്മാരെ ആശിർവദിക്കാൻ താങ്കളുടെ കുടുംബസമേതമുള്ള സാന്നിദ്ധ്യം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.
+        </p>
+      </div>
+
+      <div class="ornamental-divider" aria-hidden="true">
+        <span class="line"></span>
+        <span class="symbol">&hearts;</span>
+        <span class="line"></span>
+      </div>
+
+      <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 6px;">എന്ന്, സ്നേഹപൂർവ്വം</div>
+      <div style="font-family: var(--font-serif-display); font-size: 20px; color: var(--wine-900); font-weight: 600;">
+        സുരേഷ്ബാബു &amp; പ്രിയ
+      </div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+        പുളിക്കൽ ഹൗസ്, തിരുനാരായണപുരം, തിരുവാഴിയോട് &bull; Mob: 9446670237
+      </div>
+      <div style="font-size: 13px; color: var(--gold-600); margin-top: 10px; font-weight: 600;">
+        മംഗളാശംസകളോടെ : ആദിഷ് &amp; ബന്ധുമിത്രാദികൾ
+      </div>
+
+      <div style="margin-top: 18px;">
+        <button id="view-card-btn" class="btn-secondary-wine" type="button">
+          📜 View Original Invitation Card (വിവാഹക്ഷണപത്രിക)
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. INTERACTIVE SCRATCH-TO-REVEAL WEDDING DATE -->
+    <section id="date-section" class="date-reveal-section reveal-on-scroll" aria-label="Wedding Date Reveal">
+      <div class="section-badge">Save The Date</div>
+      <h3 class="section-title">A Special Date Awaits...</h3>
+      <p class="section-subtitle">Scratch with your finger or mouse to reveal our auspicious day</p>
+
+      <div class="scratch-card-container">
+        <!-- Revealed Layer Beneath -->
+        <div class="scratch-revealed-content">
+          <div class="revealed-day-label">SATURDAY &bull; 1202 തുലാം 7</div>
+          <div class="revealed-day-number golden-shine">24</div>
+          <div class="revealed-month-year">OCTOBER 2026</div>
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px; align-items: center;">
+            <div class="revealed-time" style="font-size: 13px; padding: 4px 14px;">
+              🕊️ മുഹൂർത്തം : 8:00 AM – 9:00 AM (ശ്രീകൃഷ്ണ ക്ഷേത്രം)
+            </div>
+            <div class="revealed-time" style="font-size: 13px; padding: 4px 14px;">
+              🎉 സ്നേഹവിരുന്ന് : 5:00 PM – 8:00 PM (സുമംഗലി ഓഡിറ്റോറിയം)
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Scratch Layer On Top -->
+        <canvas id="scratch-canvas" aria-label="Interactive scratch card surface"></canvas>
+      </div>
+
+      <div class="scratch-instruction">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 11-6 6v3h3l6-6"></path><path d="m22 2-2.5 2.5a2.12 2.12 0 0 1-3 0l-.5-.5a2.12 2.12 0 0 1 0-3L18.5 2"></path><path d="m14 6 4 4"></path></svg>
+        <span>Touch or swipe across the card to scratch</span>
+      </div>
+
+      <button id="manual-reveal-btn" class="reveal-manual-btn" type="button">Tap here to reveal instantly</button>
+    </section>
+
+    <!-- 5. WEDDING COUNTDOWN TIMER -->
+    <section id="countdown" class="countdown-section reveal-on-scroll" aria-label="Wedding Countdown">
+      <div class="section-badge" style="color: var(--gold-300);">Together Towards Forever</div>
+      <h3 class="section-title">Counting down to our special day</h3>
+      <p class="section-subtitle">24 October 2026 &bull; 5:00 PM &bull; 1202 തുലാം 7</p>
+
+      <div id="countdown-grid" class="countdown-grid">
+        <div class="countdown-card">
+          <div id="count-days" class="countdown-value">--</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-card">
+          <div id="count-hours" class="countdown-value">--</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-card">
+          <div id="count-minutes" class="countdown-value">--</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-card">
+          <div id="count-seconds" class="countdown-value">--</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+
+      <div id="countdown-complete-msg" class="countdown-complete-msg"></div>
+    </section>
+
+    <!-- 6. COUPLE STORY & FAMILIES SECTION -->
+    <section id="story" class="story-section reveal-on-scroll" aria-label="Couple Profiles">
+      <div class="section-badge">Our Story &amp; Families</div>
+      <h3 class="section-title">Two People. One Beautiful Journey.</h3>
+      <p class="section-subtitle">Two loving families united with tradition, warmth, and eternal blessings</p>
+
+      <div class="story-grid">
+        <!-- Groom -->
+        <article class="story-card">
+          <div class="story-img-wrap">
+            <img src="assets/groom.jpg" alt="Hareesh, the groom" loading="lazy" />
+          </div>
+          <span class="story-role">The Groom &bull; വരൻ</span>
+          <h4 class="story-person-name">Hareesh (ഹരീഷ്)</h4>
+          <p class="story-bio" style="font-weight: 500; color: var(--wine-900); margin-bottom: 6px;">
+            Son of Suresh Babu &amp; Priya<br />
+            (സുരേഷ്ബാബു &amp; പ്രിയ)
+          </p>
+          <p class="story-bio" style="font-size: 13px;">
+            പുളിക്കൽ ഹൗസ്, തിരുനാരായണപുരം, തിരുവാഴിയോട്<br />
+            <strong style="color: var(--gold-600);">Mob: 9446670237</strong>
+          </p>
+        </article>
+
+        <!-- Couple Featured -->
+        <article class="story-card featured">
+          <div class="story-img-wrap">
+            <img src="assets/couple-seated.jpg" alt="Hareesh and Gayathri seated together" loading="lazy" />
+          </div>
+          <span class="story-role">The Couple &bull; വധൂവരന്മാർ</span>
+          <h4 class="story-person-name">Hareesh &amp; Gayathri</h4>
+          <p class="story-bio">
+            Together stepping hand-in-hand into forever, blessed by family, cherished by relatives, and united in eternal companionship.
+          </p>
+          <div style="margin-top: 14px; font-size: 13px; color: var(--gold-600); font-weight: 600;">
+            മംഗളാശംസകളോടെ: ആദിഷ് &amp; ബന്ധുമിത്രാദികൾ
+          </div>
+        </article>
+
+        <!-- Bride -->
+        <article class="story-card">
+          <div class="story-img-wrap">
+            <img src="assets/bride.jpg" alt="Gayathri, the bride" loading="lazy" />
+          </div>
+          <span class="story-role">The Bride &bull; വധു</span>
+          <h4 class="story-person-name">Gayathri (ഗായത്രി)</h4>
+          <p class="story-bio" style="font-weight: 500; color: var(--wine-900); margin-bottom: 6px;">
+            Daughter of Sri. Balakrishnan &amp; Smt. Krishnaveni<br />
+            (ശ്രീ. ബാലകൃഷ്ണൻ &amp; ശ്രീമതി. കൃഷ്ണവേണി)
+          </p>
+          <p class="story-bio" style="font-size: 13px;">
+            മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7. PHOTO GALLERY SECTION -->
+    <section id="gallery" class="gallery-section reveal-on-scroll" aria-label="Photo Gallery">
+      <div class="section-badge">Memories</div>
+      <h3 class="section-title">Captured Moments</h3>
+      <p class="section-subtitle">Glimpses of love, tradition, and togetherness</p>
+
+      <div id="gallery-grid" class="gallery-grid">
+        <!-- Gallery cards populated dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- 8. VENUE & LOCATION SECTION (Two Auspicious Venues) -->
+    <section id="venue" class="venue-section reveal-on-scroll" aria-label="Wedding Venue">
+      <div class="section-badge">Ceremonies &amp; Venues</div>
+      <h3 class="section-title">The Celebration</h3>
+      <p class="section-subtitle">We cordially invite you to be part of both auspicious events</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto 30px;">
+        <!-- Event 1: Muhurtham -->
+        <div class="venue-card" style="margin: 0;">
+          <div class="venue-header-banner" style="padding: 26px 20px;">
+            <div class="venue-icon-gold" aria-hidden="true">🕊️</div>
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-300); margin-bottom: 4px;">Morning Ceremony</div>
+            <h4 class="venue-name" style="font-size: 26px;">മുഹൂർത്തം &bull; Muhurtham</h4>
+            <p class="venue-location-name">രാവിലെ 8:00 നും 9:00 നും മധ്യേ</p>
+          </div>
+          <div style="padding: 26px 22px;">
+            <div class="venue-detail-item" style="margin-bottom: 14px;">
+              <div class="venue-detail-icon">🏛️</div>
+              <div>
+                <div class="venue-detail-title">Temple Venue</div>
+                <div class="venue-detail-val">Sreekrishna Temple</div>
+                <div style="font-size: 13px; color: var(--text-muted);">ശ്രീകൃഷ്ണ ക്ഷേത്രം, ശ്രീകൃഷ്ണപുരം</div>
+              </div>
+            </div>
+            <div class="venue-detail-item">
+              <div class="venue-detail-icon">📅</div>
+              <div>
+                <div class="venue-detail-title">Date</div>
+                <div class="venue-detail-val">24 October 2026 (Saturday)</div>
+                <div style="font-size: 13px; color: var(--gold-600); font-weight: 600;">1202 തുലാം 7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2: Reception & Feast -->
+        <div class="venue-card" style="margin: 0; border: 2px solid var(--gold-500);">
+          <div class="venue-header-banner" style="padding: 26px 20px; background: radial-gradient(circle at center, #4a1320 0%, #20060d 100%);">
+            <div class="venue-icon-gold" aria-hidden="true">🎉</div>
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-300); margin-bottom: 4px;">Grand Reception &amp; Feast</div>
+            <h4 class="venue-name" style="font-size: 26px;">സ്നേഹവിരുന്ന് &bull; Reception</h4>
+            <p class="venue-location-name">വൈകുന്നേരം 5:00 മണി മുതൽ 8:00 മണിവരെ</p>
+          </div>
+          <div style="padding: 26px 22px;">
+            <div class="venue-detail-item" style="margin-bottom: 14px;">
+              <div class="venue-detail-icon">📍</div>
+              <div>
+                <div class="venue-detail-title">Auditorium Venue</div>
+                <div class="venue-detail-val">Sumangali Auditorium</div>
+                <div style="font-size: 13px; color: var(--text-muted);">സുമംഗലി കല്യാണമണ്ഡപം, തിരുനാരായണപുരം</div>
+              </div>
+            </div>
+            <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 8px;">
+              <button id="open-map-btn" class="btn-primary-gold" style="width: 100%;" type="button">
+                <span>Open in Google Maps</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </button>
+              <button id="copy-address-btn" class="btn-secondary-wine" style="width: 100%; margin-top: 0;" type="button">Copy Address</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. SHARE & CELEBRATE INVITATION CARD -->
+    <section class="reveal-on-scroll" style="text-align: center; padding: 40px 20px 80px;" aria-label="Share Section">
+      <div class="section-badge">Spread The Joy</div>
+      <h3 class="section-title">Be Part of Our Celebration</h3>
+      <p class="section-subtitle">Share this digital invitation with family and loved ones</p>
+
+      <button id="open-share-card-btn" class="btn-primary-gold" style="font-size: 14px; padding: 16px 36px;" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        <span>Share Wedding Invitation</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer>
+    <div class="ornamental-divider" style="margin-top: 0;" aria-hidden="true">
+      <span class="line"></span>
+      <span class="symbol">&hearts;</span>
+      <span class="line"></span>
+    </div>
+    <div class="footer-names">With love,<br />Hareesh <span class="footer-amp">&amp;</span> Gayathri</div>
+    <div class="footer-date">24 &bull; 10 &bull; 2026 &bull; 1202 തുലാം 7</div>
+    <p class="footer-gratitude">Thank you for being a part of our journey ❤️</p>
+    <div style="font-size: 13px; color: var(--gold-400); margin-top: 14px; letter-spacing: 0.05em;">
+      മംഗളാശംസകളോടെ : ആദിഷ് &amp; ബന്ധുമിത്രാദികൾ
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       PHOTO LIGHTBOX MODAL
+       ====================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Preview">
+    <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+    <button id="lightbox-prev-btn" class="lightbox-arrow-btn prev" aria-label="Previous photo">&#10094;</button>
+    <button id="lightbox-next-btn" class="lightbox-arrow-btn next" aria-label="Next photo">&#10095;</button>
+
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-image" src="" alt="Enlarged view" />
+      </div>
+      <div class="lightbox-caption-bar">
+        <div id="lightbox-caption-title" class="lightbox-caption-title"></div>
+        <div id="lightbox-caption-sub" class="lightbox-caption-sub"></div>
+      </div>
+      <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       SHARE MODAL
+       ====================================================================== -->
+  <div id="share-modal" class="custom-modal" role="dialog" aria-modal="true" aria-label="Share Invitation">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close Share Dialog">&times;</button>
+      <h4 class="modal-title">Share Invitation</h4>
+      <p class="modal-desc">Invite friends and family to join Hareesh &amp; Gayathri's wedding</p>
+
+      <div class="share-options-list">
+        <a id="whatsapp-share-link" class="share-action-btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.63c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          <span>Share via WhatsApp</span>
+        </a>
+
+        <button id="copy-link-btn" class="share-action-btn btn-copy" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+          <span>Copy Invitation Link</span>
+        </button>
+
+        <div id="copy-feedback" style="display: none; color: #1eb857; font-size: 13px; font-weight: 600;">
+          Link copied to clipboard! ✨
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       RSVP MODAL
+       ====================================================================== -->
+  <div id="rsvp-modal" class="custom-modal" role="dialog" aria-modal="true" aria-label="Send RSVP">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close RSVP Dialog">&times;</button>
+      <h4 class="modal-title">Wedding RSVP</h4>
+      <p class="modal-desc">Will you be attending Hareesh &amp; Gayathri's wedding?</p>
+
+      <form id="rsvp-form" class="rsvp-form">
+        <div class="form-group">
+          <label for="rsvp-guest-name">Your Full Name</label>
+          <input type="text" id="rsvp-guest-name" class="form-input" placeholder="Enter your name" required />
+        </div>
+
+        <div class="form-group">
+          <label>Attendance Status</label>
+          <div class="form-radio-row">
+            <label class="radio-pill">
+              <input type="radio" name="attendance" value="Joyfully Accepts" checked />
+              <span>Joyfully Accept</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="attendance" value="Regretfully Declines" />
+              <span>Regretfully Decline</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-guest-count">Number of Guests</label>
+          <select id="rsvp-guest-count" class="form-select">
+            <option value="1">1 Person</option>
+            <option value="2">2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4+">4+ Family Members</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-wishes">Warm Wishes / Message</label>
+          <textarea id="rsvp-wishes" class="form-textarea" rows="2" placeholder="Send your blessings or wishes..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary-gold" style="width: 100%; margin-top: 10px;">
+          <span>Send RSVP via WhatsApp</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Entry -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
