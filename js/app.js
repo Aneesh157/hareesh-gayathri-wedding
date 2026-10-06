@@ -542,7 +542,7 @@ function setupGallery() {
 
   // Render gallery cards dynamically
   galleryGrid.innerHTML = photos.map((photo, i) => `
-    <div class="gallery-item ${i === 0 ? 'span-2' : ''}" data-index="${i}" tabindex="0" role="button" aria-label="View photo ${photo.title}">
+    <div class="gallery-item" data-index="${i}" tabindex="0" role="button" aria-label="View photo ${photo.title}">
       <img src="${photo.src}" alt="${photo.title}" loading="lazy" />
       <div class="gallery-item-overlay">
         <h4>${photo.title}</h4>

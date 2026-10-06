@@ -124,6 +124,10 @@ Join us on our special day!`,
   assets: {
     heroImage: "assets/couple.jpg",
     coupleSeated: "assets/couple-seated.jpg",
+    coupleStanding: "assets/couple-standing.jpg",
+    coupleTraditional: "assets/couple-traditional.jpg",
+    coupleRomantic: "assets/couple-romantic.jpg",
+    coupleWalk: "assets/couple-walk.jpg",
     coupleEmbrace: "assets/couple-embrace.jpg",
     invitationCard: "assets/invitation-card.jpg",
     groomImage: "assets/groom.jpg",
@@ -139,14 +143,29 @@ Join us on our special day!`,
       caption: "Seated together in radiant smiles and celebration"
     },
     {
+      src: "assets/couple-standing.jpg",
+      title: "Two Hearts, One Journey",
+      caption: "Cherished moments framed by peaceful greenery"
+    },
+    {
+      src: "assets/couple-traditional.jpg",
+      title: "Traditional Grace",
+      caption: "Two souls united with family blessings and love"
+    },
+    {
+      src: "assets/couple-romantic.jpg",
+      title: "A Gentle Promise",
+      caption: "A quiet, romantic moment under the whispering palms"
+    },
+    {
+      src: "assets/couple-walk.jpg",
+      title: "Stepping Into Forever",
+      caption: "Joyous moments walking hand-in-hand into a new beginning"
+    },
+    {
       src: "assets/couple-embrace.jpg",
       title: "Together Forever",
       caption: "Two souls, one eternal promise of companionship"
-    },
-    {
-      src: "assets/couple.jpg",
-      title: "Traditional Elegance",
-      caption: "Cherished moments in traditional wedding attire"
     },
     {
       src: "assets/groom.jpg",
