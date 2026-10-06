@@ -551,7 +551,10 @@ function setupGallery() {
     </div>
   `).join('');
 
+  let isCustomImageModal = false;
+
   function openLightbox(index) {
+    isCustomImageModal = false;
     currentLightboxIndex = (index + photos.length) % photos.length;
     const item = photos[currentLightboxIndex];
     lightboxImg.src = item.src;
@@ -559,7 +562,23 @@ function setupGallery() {
     if (captionTitle) captionTitle.textContent = item.title;
     if (captionSub) captionSub.textContent = item.caption;
     if (counterEl) counterEl.textContent = `${currentLightboxIndex + 1} / ${photos.length}`;
+    if (prevBtn) prevBtn.style.display = '';
+    if (nextBtn) nextBtn.style.display = '';
     
+    lightbox.classList.add('is-active');
+    document.body.classList.add('invitation-locked');
+  }
+
+  function openSingleImageModal({ src, title, caption, badge }) {
+    isCustomImageModal = true;
+    lightboxImg.src = src;
+    lightboxImg.alt = title;
+    if (captionTitle) captionTitle.textContent = title;
+    if (captionSub) captionSub.textContent = caption;
+    if (counterEl) counterEl.textContent = badge || '';
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+
     lightbox.classList.add('is-active');
     document.body.classList.add('invitation-locked');
   }
@@ -567,13 +586,18 @@ function setupGallery() {
   function closeLightbox() {
     lightbox.classList.remove('is-active');
     document.body.classList.remove('invitation-locked');
+    if (prevBtn) prevBtn.style.display = '';
+    if (nextBtn) nextBtn.style.display = '';
+    isCustomImageModal = false;
   }
 
   function nextPhoto() {
+    if (isCustomImageModal) return;
     openLightbox(currentLightboxIndex + 1);
   }
 
   function prevPhoto() {
+    if (isCustomImageModal) return;
     openLightbox(currentLightboxIndex - 1);
   }
 
@@ -636,10 +660,12 @@ function setupGallery() {
   const viewCardBtn = document.getElementById('view-card-btn');
   if (viewCardBtn) {
     viewCardBtn.addEventListener('click', () => {
-      const cardIdx = photos.findIndex(p => p.src.includes('invitation-card'));
-      if (cardIdx !== -1) {
-        openLightbox(cardIdx);
-      }
+      openSingleImageModal({
+        src: weddingConfig.assets.invitationCard || 'assets/invitation-card.jpg',
+        title: 'വിവാഹക്ഷണപത്രിക',
+        caption: 'Official Wedding Invitation Card • Hareesh & Gayathri',
+        badge: 'ഔദ്യോഗിക ക്ഷണക്കത്ത് 📜'
+      });
     });
   }
 }

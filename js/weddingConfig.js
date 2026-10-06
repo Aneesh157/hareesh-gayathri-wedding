@@ -166,16 +166,6 @@ Join us on our special day!`,
       src: "assets/couple-embrace.jpg",
       title: "Together Forever",
       caption: "Two souls, one eternal promise of companionship"
-    },
-    {
-      src: "assets/groom.jpg",
-      title: "The Groom",
-      caption: "Hareesh (ഹരീഷ്)"
-    },
-    {
-      src: "assets/bride.jpg",
-      title: "The Bride",
-      caption: "Gayathri (ഗായത്രി)"
     }
   ],
 
