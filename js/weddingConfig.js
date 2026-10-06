@@ -1,124 +1,185 @@
 /**
- * Central Configuration for Hareesh & Gayathri Wedding Invitation
- * Authenticated directly from the official wedding invitation card (വിവാഹക്ഷണപത്രിക).
+ * Central Configuration for Gayathri B (Malavika) & Hareesh Wedding Invitation
+ * Authenticated directly from the official bride-side wedding invitation card.
+ * Single source of truth: assets/invitation-card.jpg
  */
 export const weddingConfig = {
   couple: {
+    bride: "Gayathri B (Malavika)",
     groom: "Hareesh",
-    bride: "Gayathri",
+    brideMalayalam: "ഗായത്രി ബി (മാളവിക)",
     groomMalayalam: "ഹരീഷ്",
-    brideMalayalam: "ഗായത്രി",
-    groomParents: "Suresh Babu & Priya",
-    groomParentsMalayalam: "സുരേഷ്ബാബു & പ്രിയ",
-    groomHouse: "Pulikkal House, Thirunarayanapuram, Thiruvazhiyode",
-    groomHouseMalayalam: "പുളിക്കൽ ഹൗസ്, തിരുനാരായണപുരം, തിരുവാഴിയോട്",
-    brideParents: "Balakrishnan & Krishnaveni",
+    pairingTitle: "Gayathri B (Malavika) & Hareesh",
+    pairingTitleMalayalam: "ഗായത്രി ബി (മാളവിക) & ഹരീഷ്",
+    
+    // Bride & Family Details (Single Source of Truth: Uploaded Card)
+    brideParents: "Sri. Balakrishnan & Smt. Krishnaveni",
     brideParentsMalayalam: "ശ്രീ. ബാലകൃഷ്ണൻ & ശ്രീമതി. കൃഷ്ണവേണി",
-    brideHouse: "Mundayil House, Sreekrishnapuram",
-    brideHouseMalayalam: "മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം",
-    blessingText: "With the blessings of our families",
-    blessingTextMalayalam: "ഞങ്ങളുടെ മകൻ ഹരീഷ് വിവാഹിതനാവുകയാണ്",
-    compliments: "Aadish & Relatives and Friends",
-    complimentsMalayalam: "ആദിഷ് & ബന്ധുമിത്രാദികൾ",
-    contactPhone: "9446670237",
-    tagline: "Two people. One beautiful journey."
+    brideHouse: "Mundayil House, Sreekrishnapuram, 679513",
+    brideHouseMalayalam: "മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം, 679513",
+    contactPhone: "9895882177",
+    contactDisplay: "+91 98958 82177",
+
+    // Groom Details (As stated on the bride-side card)
+    groomParents: "Sri. Suresh Babu & Smt. Priya",
+    groomParentsMalayalam: "ശ്രീ. സുരേഷ് ബാബു & ശ്രീമതി. പ്രിയ",
+    groomHouse: "Pulikkal, Thirunarayanapuram, Thiruvazhiyode P.O., 679514",
+    groomHouseMalayalam: "പുള്ളിക്കൽ, തിരുനാരായണപുരം, തിരുവാഴിയോട് പി.ഒ., 679514",
+
+    // Compliments / Relatives & Friends (Single Source of Truth: Uploaded Card)
+    complimentsSalutation: "ഉപചാരപൂർവ്വം:",
+    compliments: "Kishore, Akhil Shankar, Nithin Shankar, Nikhil Shankar, Nikhila Shankar & Relatives and Friends",
+    complimentsMalayalam: "കിഷോർ, അഖിൽ ശങ്കർ, നിധിൻ ശങ്കർ, നിഖിൽ ശങ്കർ, നിഖില ശങ്കർ & ബന്ധുമിത്രാദികൾ",
+    tagline: "Two souls, two families, united in sacred love and timeless Kerala traditions."
   },
 
   wedding: {
-    targetDate: "2026-10-24T00:00:00",
+    targetDate: "2026-10-24T08:00:00",
     displayDate: "24 October 2026",
     shortDate: "24 / 10 / 2026",
     malayalamDate: "1202 തുലാം 7",
     day: "Saturday",
     dayMalayalam: "ശനിയാഴ്ച",
     dayNumber: "24",
+    monthNumber: "10",
+    yearShort: "26",
     monthName: "OCTOBER",
     yearNumber: "2026"
   },
 
-  // Two distinct auspicious events as per the official invitation card
-  events: [
+  // The 3 Auspicious Details Columns from the Card
+  auspiciousColumns: [
+    {
+      id: "date",
+      icon: "calendar",
+      labelMalayalam: "തീയതി",
+      year: "2026",
+      dateMalayalam: "ഒക്ടോബർ 24",
+      malayalamEra: "(1202 തുലാം 7)",
+      dayMalayalam: "ശനിയാഴ്ച"
+    },
+    {
+      id: "venue",
+      icon: "location",
+      labelMalayalam: "താലികെട്ട്:",
+      venueNameLine1: "ശ്രീകൃഷ്ണ",
+      venueNameLine2: "ക്ഷേത്രം",
+      locationMalayalam: "ശ്രീകൃഷ്ണപുരം",
+      hasQr: true
+    },
     {
       id: "muhurtham",
-      name: "Muhurtham & Thalikettu",
-      nameMalayalam: "മുഹൂർത്തം & താലികെട്ട്",
+      icon: "clock",
+      labelMalayalam: "മുഹൂർത്തം",
+      timeLine1: "രാവിലെ",
+      timeLine2: "8:00 നും",
+      timeLine3: "9:00 നും മധ്യേ"
+    }
+  ],
+
+  // Events strictly matching the uploaded card
+  events: [
+    {
+      id: "thalikettu",
+      name: "Thalikettu & Muhurtham",
+      nameMalayalam: "താലികെട്ട് & മുഹൂർത്തം",
       time: "8:00 AM – 9:00 AM",
-      timeMalayalam: "രാവിലെ 8.00 നും 9.00 നും മധ്യേ",
+      timeMalayalam: "രാവിലെ 8:00 നും 9:00 നും മധ്യേ",
       venueName: "Sreekrishna Temple",
       venueMalayalam: "ശ്രീകൃഷ്ണ ക്ഷേത്രം",
       location: "Sreekrishnapuram",
       locationMalayalam: "ശ്രീകൃഷ്ണപുരം",
-      description: "Sacred matrimonial knot and temple blessings.",
-      icon: "temple"
+      description: "Sacred thalikettu and matrimonial vows at Sreekrishna Temple, Sreekrishnapuram.",
+      icon: "temple",
+      mapUrl: "https://www.google.com/maps/search/Sreekrishna+Temple+Sreekrishnapuram+Kerala/@10.916667,76.433333,15z"
     },
     {
-      id: "reception",
-      name: "Wedding Feast & Reception",
-      nameMalayalam: "സ്നേഹവിരുന്ന്",
-      time: "5:00 PM – 8:00 PM",
-      timeMalayalam: "വൈകുന്നേരം 5.00 മണി മുതൽ 8.00 മണിവരെ",
-      venueName: "Sumangali Kalyanamandapam (Auditorium)",
-      venueMalayalam: "സുമംഗലി കല്യാണമണ്ഡപം",
-      location: "Thirunarayanapuram",
-      locationMalayalam: "തിരുനാരായണപുരം",
-      description: "Join us with your family to celebrate and bless the newlyweds.",
-      mapUrl: "https://www.google.com/maps/place/Thirunarayanapuram+Sumangali+Auditorium/@10.9048812,76.394596,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba7d6e391a424ff:0xc99426cf88eeeb70!8m2!3d10.9048812!4d76.394596!16s%2Fg%2F11c2nk2ghj?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D",
-      icon: "auditorium"
+      id: "salkkaram",
+      name: "Wedding Reception & Feast",
+      nameMalayalam: "വിവാഹസൽക്കാരം",
+      time: "Following Ceremony",
+      timeMalayalam: "വിവാഹത്തോടനുബന്ധിച്ച്",
+      venueName: "Sreekrishna Temple & Family Reception",
+      venueMalayalam: "വിവാഹസൽക്കാരം",
+      location: "Sreekrishnapuram",
+      locationMalayalam: "ശ്രീകൃഷ്ണപുരം",
+      description: "വിവാഹത്തിലും തുടർന്ന് നടത്തുന്ന വിവാഹസൽക്കാരത്തിലും പങ്കുകൊണ്ട് വധൂവരന്മാരെ ആശീർവദിക്കാൻ താങ്കളെ കുടുംബസമേതം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.",
+      icon: "feast"
     }
   ],
 
   venue: {
-    name: "Sumangali Kalyanamandapam / Auditorium",
-    nameMalayalam: "സുമംഗലി കല്യാണമണ്ഡപം",
-    location: "Thirunarayanapuram",
-    locationMalayalam: "തിരുനാരായണപുരം",
-    fullAddress: "Sumangali Auditorium, Thirunarayanapuram, Kerala 679514",
-    templeVenue: "Sreekrishna Temple, Sreekrishnapuram",
-    mapUrl: "https://www.google.com/maps/place/Thirunarayanapuram+Sumangali+Auditorium/@10.9048812,76.394596,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba7d6e391a424ff:0xc99426cf88eeeb70!8m2!3d10.9048812!4d76.394596!16s%2Fg%2F11c2nk2ghj?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+    templeName: "Sreekrishna Temple, Sreekrishnapuram",
+    templeMalayalam: "ശ്രീകൃഷ്ണ ക്ഷേത്രം, ശ്രീകൃഷ്ണപുരം",
+    brideHouseAddress: "Mundayil House, Sreekrishnapuram, Kerala 679513",
+    brideHouseMalayalam: "മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം, 679513",
+    mapUrl: "https://www.google.com/maps/search/Sreekrishna+Temple+Sreekrishnapuram+Kerala/@10.916667,76.433333,15z"
+  },
+
+  // Exact card wording verbatim
+  cardDetails: {
+    announcementLine1: "ഞങ്ങളുടെ മകൾ",
+    brideName: "ഗായത്രി ബി",
+    bridePetName: "(മാളവിക)",
+    statusLine: "വിവാഹിതയാവുകയാണ്",
+    groomIntro: "വരൻ :",
+    groomName: "ഹരീഷ്",
+    groomParentage: "S/o. ശ്രീ. സുരേഷ് ബാബു & ശ്രീമതി. പ്രിയ",
+    groomAddressLine1: "പുള്ളിക്കൽ, തിരുനാരായണപുരം,",
+    groomAddressLine2: "തിരുവാഴിയോട് പി.ഒ., 679514",
+    
+    // Invitation message paragraph
+    invitationMessage: "വിവാഹത്തിലും തുടർന്ന് നടത്തുന്ന വിവാഹസൽക്കാരത്തിലും പങ്കുകൊണ്ട് വധൂവരന്മാരെ ആശീർവദിക്കാൻ താങ്കളെ കുടുംബസമേതം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.",
+
+    // Inviting parents
+    closingIntro: "എന്ന്,",
+    parentsName: "ശ്രീ. ബാലകൃഷ്ണൻ & ശ്രീമതി. കൃഷ്ണവേണി",
+    houseAddress: "മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം, 679513",
+    phoneNumber: "ഫോൺ: 9895882177",
+
+    // Compliments
+    complimentsHeader: "ഉപചാരപൂർവ്വം:",
+    complimentsLine1: "കിഷോർ, അഖിൽ ശങ്കർ, നിധിൻ ശങ്കർ,",
+    complimentsLine2: "നിഖിൽ ശങ്കർ, നിഖില ശങ്കർ",
+    complimentsLine3: "& ബന്ധുമിത്രാദികൾ"
   },
 
   messages: {
     invitationHeaderMalayalam: "വിവാഹക്ഷണപത്രിക",
-    openingSubtitle: "invite you to celebrate their wedding",
-    openingHint: "Tap to open the invitation",
-    heroHeading: "A beautiful beginning to a lifetime together",
-    invitation: `Two hearts, two souls, and one beautiful journey.
-
-With the love and blessings of our families, we invite you to be a part of our special day as we begin this beautiful chapter of our lives together.
-
-വിവാഹത്തോടനുബന്ധിച്ച് വൈകുന്നേരം 5 മണി മുതൽ 8 മണിവരെ സുമംഗലി കല്യാണമണ്ഡപത്തിൽ വെച്ച് നടത്തുന്ന സ്നേഹ വിരുന്നിൽ പങ്കുകൊണ്ട് വധൂവരന്മാരെ ആശിർവദിക്കാൻ താങ്കളുടെ കുടുംബസമേതമുള്ള സാന്നിദ്ധ്യം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.
-
-Your presence and blessings will make our celebration complete.`,
-    scratchTitle: "A Special Date Awaits...",
-    scratchHint: "Scratch with your finger or mouse to reveal",
-    countdownTitle: "Counting down to our special day",
-    countdownComplete: "Today is the day ❤️",
-    storyTitle: "Our Story & Families",
-    storySubtitle: "Two families united with love, culture, and eternal blessings",
-    groomBio: "Son of Suresh Babu & Priya (Pulikkal House, Thirunarayanapuram, Thiruvazhiyode)",
-    groomBioMalayalam: "സുരേഷ്ബാബു & പ്രിയ ദമ്പതികളുടെ മകൻ (പുളിക്കൽ ഹൗസ്, തിരുനാരായണപുരം)",
-    brideBio: "Daughter of Balakrishnan & Krishnaveni (Mundayil House, Sreekrishnapuram)",
-    brideBioMalayalam: "ശ്രീ. ബാലകൃഷ്ണൻ & ശ്രീമതി. കൃഷ്ണവേണി ദമ്പതികളുടെ മകൾ (മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം)",
-    coupleBio: "Bound by friendship, blessed with love, stepping hand-in-hand into forever.",
-    galleryTitle: "Captured Moments",
-    gallerySubtitle: "Glimpses of love, tradition, and togetherness",
-    venueTitle: "The Celebration & Venues",
-    venueSubtitle: "Muhurtham at Sreekrishna Temple & Reception at Sumangali Auditorium",
+    heroHeading: "A Sacred Beginning to a Lifetime of Togetherness",
+    scratchTitle: "Save The Date",
+    scratchHint: "Scratch the card to reveal the sacred date & hours",
+    countdownTitle: "Counting down to our auspicious day",
+    countdownComplete: "Today is the auspicious day ❤️",
+    storyTitle: "The Bride, Groom & Families",
+    storySubtitle: "United in love, culture, and familial blessings",
+    galleryTitle: "Cherished Moments",
+    gallerySubtitle: "Glimpses of love, tradition, and joyous togetherness",
+    venueTitle: "Ceremonies & Venues",
+    venueSubtitle: "Thalikettu at Sreekrishna Temple, Sreekrishnapuram & Vivahasalkkaram",
     shareTitle: "Share Wedding Invitation",
-    shareMessage: `You're warmly invited to celebrate the wedding of Hareesh & Gayathri ❤️
+    shareMessage: `Warm wedding invitation from the family of Gayathri B (Malavika) & Hareesh ❤️
 
-📅 24 October 2026 (1202 തുലാം 7)
-🕊️ Muhurtham: 8:00 AM – 9:00 AM (Sreekrishna Temple, Sreekrishnapuram)
-🎉 Reception: 5:00 PM – 8:00 PM (Sumangali Auditorium, Thirunarayanapuram)
+✨ വിവാഹക്ഷണപത്രിക
+👰 വധു: ഗായത്രി ബി (മാളവിക)
+(D/o ശ്രീ. ബാലകൃഷ്ണൻ & ശ്രീമതി. കൃഷ്ണവേണി, മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം, 679513)
+🤵 വരൻ: ഹരീഷ്
+(S/o ശ്രീ. സുരേഷ് ബാബു & ശ്രീമതി. പ്രിയ, പുള്ളിക്കൽ, തിരുനാരായണപുരം, തിരുവാഴിയോട് പി.ഒ., 679514)
 
-With best compliments from Suresh Babu, Priya, Aadish & Family
-Contact: +91 9446670237
+📅 തീയതി: 2026 ഒക്ടോബർ 24 ശനിയാഴ്ച (1202 തുലാം 7)
+🕊️ താലികെട്ട് / മുഹൂർത്തം: രാവിലെ 8:00 നും 9:00 നും മധ്യേ (ശ്രീകൃഷ്ണ ക്ഷേത്രം, ശ്രീകൃഷ്ണപുരം)
+🎉 വിവാഹത്തിലും തുടർന്ന് നടത്തുന്ന വിവാഹസൽക്കാരത്തിലും പങ്കുകൊണ്ട് വധൂവരന്മാരെ ആശീർവദിക്കാൻ താങ്കളെ കുടുംബസമേതം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.
 
-Join us on our special day!`,
-    footerNote: "With love,\nHareesh & Gayathri",
-    footerCompliments: "ആദിഷ് & ബന്ധുമിത്രാദികൾ",
-    footerDate: "24 • 10 • 2026",
-    footerGratitude: "Thank you for being a part of our journey ❤️"
+എന്ന്,
+ശ്രീ. ബാലകൃഷ്ണൻ & ശ്രീമതി. കൃഷ്ണവേണി
+മുണ്ടയിൽ ഹൗസ്, ശ്രീകൃഷ്ണപുരം, 679513
+ഫോൺ: 9895882177
+
+ഉപചാരപൂർവ്വം: കിഷോർ, അഖിൽ ശങ്കർ, നിധിൻ ശങ്കർ, നിഖിൽ ശങ്കർ, നിഖില ശങ്കർ & ബന്ധുമിത്രാദികൾ`,
+    footerNote: "With warm family blessings,",
+    footerCompliments: "കിഷോർ, അഖിൽ ശങ്കർ, നിധിൻ ശങ്കർ, നിഖിൽ ശങ്കർ, നിഖില ശങ്കർ & ബന്ധുമിത്രാദികൾ",
+    footerDate: "24 • 10 • 2026 • 1202 തുലാം 7",
+    footerGratitude: "Thank you for sharing in our joy & blessing the couple ❤️"
   },
 
   assets: {
@@ -132,55 +193,55 @@ Join us on our special day!`,
     invitationCard: "assets/invitation-card.jpg",
     groomImage: "assets/groom.jpg",
     brideImage: "assets/bride.jpg",
-    music: "assets/wedding-music.mp3",
-    fallbackHero: "assets/couple.jpg"
+    music: "assets/wedding-music.mp3"
   },
 
   gallery: [
     {
       src: "assets/couple-seated.jpg",
-      title: "Hareesh & Gayathri",
-      caption: "Seated together in radiant smiles and celebration"
+      title: "Gayathri & Hareesh",
+      caption: "Seated in joyous grace and family warmth"
     },
     {
       src: "assets/couple-standing.jpg",
       title: "Two Hearts, One Journey",
-      caption: "Cherished moments framed by peaceful greenery"
+      caption: "Cherished moments framed by serene Kerala greenery"
     },
     {
       src: "assets/couple-traditional.jpg",
-      title: "Traditional Grace",
-      caption: "Two souls united with family blessings and love"
+      title: "Traditional Elegance",
+      caption: "Blessed with sacred traditions and familial love"
     },
     {
       src: "assets/couple-romantic.jpg",
       title: "A Gentle Promise",
-      caption: "A quiet, romantic moment under the whispering palms"
+      caption: "A quiet, romantic promise under the whispering palms"
     },
     {
       src: "assets/couple-walk.jpg",
       title: "Stepping Into Forever",
-      caption: "Joyous moments walking hand-in-hand into a new beginning"
+      caption: "Walking hand-in-hand into a bright and beautiful chapter"
     },
     {
       src: "assets/couple-embrace.jpg",
       title: "Together Forever",
-      caption: "Two souls, one eternal promise of companionship"
+      caption: "Two souls united in lifelong companionship"
     }
   ],
 
   theme: {
-    primaryWine: "#3D0F19",
-    wineLight: "#5A1725",
-    champagneGold: "#D4AF37",
-    goldLight: "#F3E5AB",
-    warmIvory: "#FDFBF7",
-    softBeige: "#F5EFEB",
-    charcoal: "#231815"
+    paperIvory: "#FAF8F5",
+    paperWhite: "#FFFFFF",
+    creamSilk: "#F5EFEB",
+    kasavuGold: "#C59A3F",
+    goldDeep: "#9E7422",
+    goldFoil: "#DFBF6C",
+    charcoalInk: "#1C1917",
+    charcoalMuted: "#665D56",
+    royalMaroon: "#7A1E32"
   }
 };
 
-// Also attach to window for straightforward browser access
 if (typeof window !== "undefined") {
   window.weddingConfig = weddingConfig;
 }
