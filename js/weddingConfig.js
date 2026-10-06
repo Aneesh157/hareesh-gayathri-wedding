@@ -25,7 +25,7 @@ export const weddingConfig = {
   },
 
   wedding: {
-    targetDate: "2026-10-24T17:00:00",
+    targetDate: "2026-10-24T00:00:00",
     displayDate: "24 October 2026",
     shortDate: "24 / 10 / 2026",
     malayalamDate: "1202 തുലാം 7",

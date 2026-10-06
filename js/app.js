@@ -663,8 +663,7 @@ function setupGallery() {
       openSingleImageModal({
         src: weddingConfig.assets.invitationCard || 'assets/invitation-card.jpg',
         title: 'വിവാഹക്ഷണപത്രിക',
-        caption: 'Official Wedding Invitation Card • Hareesh & Gayathri',
-        badge: 'ഔദ്യോഗിക ക്ഷണക്കത്ത് 📜'
+        caption: 'Official Wedding Invitation Card • Hareesh & Gayathri'
       });
     });
   }
